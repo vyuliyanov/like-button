@@ -18,6 +18,13 @@ $select_posts = $db->selectAll("
         LEFT JOIN liked AS l ON l.user_id = '".$_SESSION['user_id']."' AND l.post_id = p.id
     ORDER BY p.id DESC
 ");
+
+?>
+    <textarea id="add_post_text" cols="40" rows="10"></textarea><br>
+    <button id="add_post_button" onclick="addPost()">Add Post</button>
+    <br><br>
+    <div id="timeline">
+<?php
 $text = '';
 foreach($select_posts AS $p){
     $text = (!empty($p['liked_id']) ? 'Unlike' : 'Like');
@@ -31,7 +38,7 @@ foreach($select_posts AS $p){
 
 
 ?>
-
+</div>
 
 <script>
     function like(id){
@@ -51,6 +58,22 @@ foreach($select_posts AS $p){
                 }
             }
         });
+    }
+
+    function addPost(){
+        var post_text = $('#add_post_text').val();
+
+        $.ajax({
+            type: 'POST',
+            url: "add_post.php",
+            data: {
+                text: post_text,
+            },
+            success: function(data){
+             $('#timeline').prepend(data);
+             $('#add_post_text').val('');
+            }
+        });       
     }
 
 </script>

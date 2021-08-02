@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2021 at 03:32 PM
+-- Generation Time: Aug 02, 2021 at 06:08 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -33,13 +33,6 @@ CREATE TABLE `liked` (
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `liked`
---
-
-INSERT INTO `liked` (`id`, `user_id`, `post_id`) VALUES
-(17, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -48,16 +41,9 @@ INSERT INTO `liked` (`id`, `user_id`, `post_id`) VALUES
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `text` varchar(255) NOT NULL
+  `text` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `text`) VALUES
-(1, 'tova e post 1 '),
-(2, 'tova e post 2 ala bala');
 
 --
 -- Indexes for dumped tables
@@ -83,13 +69,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `liked`
 --
 ALTER TABLE `liked`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
